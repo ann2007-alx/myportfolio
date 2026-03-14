@@ -225,10 +225,10 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
 
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+  const message = document.getElementById('feedback').value.trim();
 
   if(name && email && message){
-    alert(`Thank you ${name}! Your message has been sent.`);
+    alert(`Thank you ${name}! Your feedback has been sent.`);
     // Reset form
     this.reset();
   } else {
