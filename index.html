@@ -211,18 +211,38 @@
   </footer>
 
   <script>
-    // Form interactivity
-    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default page reload
+    // Connect feedback form to backend
+    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent default form submission
+
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const feedback = document.getElementById('feedback').value.trim();
 
       if(name && email && feedback){
-        alert(`Thank you ${name}! Your feedback has been submitted.`);
-        this.reset(); // Reset form
+        try {
+          // Send POST request to Node.js backend
+          const response = await fetch('http://localhost:3000/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, feedback })
+          });
+
+          const data = await response.json();
+
+          if(response.ok){
+            alert(data.message); // Show success
+            this.reset();
+          } else {
+            alert('Error: ' + data.message);
+          }
+
+        } catch(err){
+          console.error(err);
+          alert('Could not connect to server. Make sure backend is running.');
+        }
       } else {
-        alert("Please fill in all fields.");
+        alert('Please fill in all fields.');
       }
     });
   </script>
