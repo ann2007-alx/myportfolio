@@ -83,6 +83,11 @@ justify-content:center;
 width:250px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.certificates img:hover{
+transform:scale(1.05);
 }
 
 .contact a{
@@ -128,6 +133,12 @@ background:#0f172a;
 margin-top:40px;
 }
 
+@media(max-width:600px){
+.certificates img{
+width:100%;
+}
+}
+
 </style>
 </head>
 
@@ -135,7 +146,7 @@ margin-top:40px;
 
 <header>
 
-<img src="profile.jpg" alt="Marie Ann Saniya">
+<img src="profile.jpeg" alt="Marie Ann Saniya">
 
 <h1>Marie Ann Saniya V</h1>
 <p>BCA Student | Cloud Computing | Web Development Learner</p>
@@ -177,7 +188,15 @@ cloud computing, and web development. I enjoy learning new technologies and buil
 <h2>Certificates</h2>
 
 <div class="certificates">
-<!-- Add certificate images here -->
+
+<img src="aws_certificate1.jpeg" alt="Certificate 1">
+<img src="html_certificate2.jpeg" alt="Certificate 2">
+<img src="css_certificate3.jpeg" alt="Certificate 3">
+<img src="javascript_certificate4.jpeg" alt="Certificate 4">
+<img src="frontendweb_certificate5.jpeg" alt="Certificate 5">
+<img src="nodejs_certificate6.jpeg" alt="Certificate 6">
+<img src="github_certificate7.jpeg" alt="Certificate 7">
+
 </div>
 
 </section>
