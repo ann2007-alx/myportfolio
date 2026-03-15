@@ -1,251 +1,91 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Marie Ann Saniya Portfolio</title>
-  <style>
-    /* General Styles */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      scroll-behavior: smooth;
-    }
+<title>Feedback Form</title>
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-    }
+<!-- Supabase library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-    header h1 {
-      margin: 10px 0;
-    }
+<style>
 
-    header p {
-      font-size: 18px;
-    }
+body{
+font-family:Arial;
+background:#f2f2f2;
+text-align:center;
+padding:50px;
+}
 
-    .buttons a {
-      padding: 12px 25px;
-      margin: 10px;
-      background: #38bdf8;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+form{
+background:white;
+padding:20px;
+border-radius:10px;
+display:inline-block;
+}
 
-    .buttons a:hover {
-      background: #0ea5e9;
-      color: white;
-      transform: scale(1.05);
-    }
+input, textarea{
+width:250px;
+padding:10px;
+margin:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
 
-    .card {
-      background: white;
-      color: black;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 15px 0;
-    }
+button:hover{
+background:#0056b3;
+}
 
-    .skills span {
-      background: #38bdf8;
-      color: black;
-      padding: 8px 14px;
-      margin: 5px;
-      display: inline-block;
-      border-radius: 6px;
-    }
-
-    /* Certificates placeholder */
-    .certificates {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .certificates img {
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      transition: 0.3s;
-    }
-
-    .certificates img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Contact Section */
-    .contact a {
-      display: block;
-      color: white;
-      margin: 10px 0;
-      text-decoration: none;
-    }
-
-    .contact-form {
-      background: white;
-      color: black;
-      padding: 25px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: 25px auto 0;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    .contact-form button {
-      padding: 12px 25px;
-      background: #38bdf8;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .contact-form button:hover {
-      background: #0ea5e9;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0f172a;
-      margin-top: 40px;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .certificates img {
-        width: 100%;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Marie Ann Saniya V</h1>
-    <p>BCA Student | Cloud Computing | Web Development Learner</p>
-    <div class="buttons">
-      <a href="#certificates">View Certificates</a>
-      <a href="#contact">Contact Me</a>
-    </div>
-  </header>
+<h1>Send Feedback</h1>
 
-  <section>
-    <h2>About Me</h2>
-    <div class="card">
-      <p>
-        Hello! I am <b>Marie Ann Saniya V</b>, a BCA student from Bangalore who is 
-        interested in technology, cloud computing, and web development. 
-        I enjoy learning new technologies and building projects to improve 
-        my technical skills.
-      </p>
-    </div>
-  </section>
+<form onsubmit="sendFeedback(event)">
+<input id="name" placeholder="Your Name" required><br>
 
-  <section>
-    <h2>Skills</h2>
-    <div class="card skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>Python</span>
-      <span>C</span>
-      <span>C++</span>
-      <span>GitHub</span>
-      <span>Cloud Computing</span>
-    </div>
-  </section>
+<textarea id="message" placeholder="Your Message" required></textarea><br>
 
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="certificates">
-      <!-- Add certificate images here -->
-    </div>
-  </section>
+<button type="submit">Submit</button>
+</form>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-      <a href="mailto:saniyaa51015@gmail.com">📧 Email: saniyaa51015@gmail.com</a>
-      <a href="https://www.linkedin.com/in/marie-ann-saniya-v-19a651379" target="_blank">LinkedIn Profile</a>
-      <a href="https://github.com/ann2007-alx/portfolio" target="_blank">GitHub Portfolio</a>
-    </div>
+<script>
 
-    <div class="contact-form">
-      <h3>Send Me Feedback</h3>
-      <form id="feedbackForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="feedback" placeholder="Your Feedback" rows="5" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </section>
+const supabaseUrl = "YOUR_PROJECT_URL";
+const supabaseKey = "YOUR_ANON_KEY";
 
-  <footer>
-    © 2026 Marie Ann Saniya V
-  </footer>
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-  <script>
-    // Connect feedback form to backend
-    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
-      e.preventDefault(); // Prevent default form submission
+async function sendFeedback(event){
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const feedback = document.getElementById('feedback').value.trim();
+event.preventDefault();
 
-      if(name && email && feedback){
-        try {
-          // Send POST request to Node.js backend
-          const response = await fetch('http://local host:3000/feedback', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, feedback })
-          });
+const name = document.getElementById("name").value;
+const message = document.getElementById("message").value;
 
-          const data = await response.json();
+const { data, error } = await supabaseClient
+.from("feedback")
+.insert([{ name:name, message:message }]);
 
-          if(response.ok){
-            alert(data.message); // Show success
-            this.reset();
-          } else {
-            alert('Error: ' + data.message);
-          }
+if(error){
+alert("Error saving feedback");
+}else{
+alert("Feedback saved!");
+}
 
-        } catch(err){
-          console.error(err);
-          alert('Could not connect to server. Make sure backend is running.');
-        }
-      } else {
-        alert('Please fill in all fields.');
-      }
-    });
-  </script>
+}
+
+</script>
 
 </body>
 </html>
