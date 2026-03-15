@@ -2,85 +2,238 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Feedback Form</title>
+  <title>Marie Ann Saniya Portfolio</title>
 
-<!-- Supabase library -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-<style>
+  <style>
 
-body{
-font-family:Arial;
-background:#f2f2f2;
-text-align:center;
-padding:50px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: linear-gradient(135deg,#0f172a,#1e3a8a);
+      scroll-behavior: smooth;
+    }
 
-form{
-background:white;
-padding:20px;
-border-radius:10px;
-display:inline-block;
-}
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
 
-input, textarea{
-width:250px;
-padding:10px;
-margin:10px;
-border:1px solid #ccc;
-border-radius:5px;
-}
+    header h1 {
+      margin: 10px 0;
+    }
 
-button{
-padding:10px 20px;
-background:#007bff;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
+    .buttons a {
+      padding: 12px 25px;
+      margin: 10px;
+      background: #38bdf8;
+      color: black;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-button:hover{
-background:#0056b3;
-}
+    .buttons a:hover {
+      background:#0ea5e9;
+      color:white;
+      transform:scale(1.05);
+    }
 
-</style>
+    section{
+      padding:40px 20px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .card{
+      background:white;
+      color:black;
+      padding:20px;
+      border-radius:10px;
+      margin:15px 0;
+    }
+
+    .skills span{
+      background:#38bdf8;
+      color:black;
+      padding:8px 14px;
+      margin:5px;
+      display:inline-block;
+      border-radius:6px;
+    }
+
+    .certificates{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      justify-content:center;
+    }
+
+    .certificates img{
+      width:250px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .contact a{
+      display:block;
+      color:white;
+      margin:10px 0;
+      text-decoration:none;
+    }
+
+    .contact-form{
+      background:white;
+      color:black;
+      padding:25px;
+      border-radius:10px;
+      max-width:500px;
+      margin:25px auto 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-size:16px;
+    }
+
+    .contact-form button{
+      padding:12px 25px;
+      background:#38bdf8;
+      color:black;
+      border:none;
+      border-radius:8px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:#0f172a;
+      margin-top:40px;
+    }
+
+  </style>
 </head>
 
 <body>
 
-<h1>Send Feedback</h1>
+<header>
+<h1>Marie Ann Saniya V</h1>
+<p>BCA Student | Cloud Computing | Web Development Learner</p>
+
+<div class="buttons">
+<a href="#certificates">View Certificates</a>
+<a href="#contact">Contact Me</a>
+</div>
+</header>
+
+<section>
+<h2>About Me</h2>
+
+<div class="card">
+<p>
+Hello! I am <b>Marie Ann Saniya V</b>, a BCA student from Bangalore interested in technology,
+cloud computing, and web development. I enjoy learning new technologies and building projects.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Skills</h2>
+
+<div class="card skills">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>Python</span>
+<span>C</span>
+<span>C++</span>
+<span>GitHub</span>
+<span>Cloud Computing</span>
+</div>
+</section>
+
+<section id="certificates">
+<h2>Certificates</h2>
+
+<div class="certificates">
+<!-- Add certificate images -->
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="contact">
+<a href="mailto:saniyaa51015@gmail.com">📧 Email: saniyaa51015@gmail.com</a>
+<a href="https://www.linkedin.com/in/marie-ann-saniya-v-19a651379" target="_blank">LinkedIn Profile</a>
+<a href="https://github.com/ann2007-alx/portfolio" target="_blank">GitHub Portfolio</a>
+</div>
+
+<div class="contact-form">
+
+<h3>Send Me Feedback</h3>
 
 <form onsubmit="sendFeedback(event)">
-<input id="name" placeholder="Your Name" required><br>
 
-<textarea id="message" placeholder="Your Message" required></textarea><br>
+<input id="name" placeholder="Your Name" required>
+
+<input id="email" placeholder="Your Email" required>
+
+<textarea id="feedback" placeholder="Your Feedback" rows="5" required></textarea>
 
 <button type="submit">Submit</button>
+
 </form>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Marie Ann Saniya V
+</footer>
 
 <script>
 
 const supabaseUrl = "YOUR_PROJECT_URL";
 const supabaseKey = "YOUR_ANON_KEY";
 
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = supabase.createClient(supabaseUrl,supabaseKey);
 
 async function sendFeedback(event){
 
 event.preventDefault();
 
 const name = document.getElementById("name").value;
-const message = document.getElementById("message").value;
+const email = document.getElementById("email").value;
+const feedback = document.getElementById("feedback").value;
 
-const { data, error } = await supabaseClient
+const { data,error } = await supabaseClient
 .from("feedback")
-.insert([{ name:name, message:message }]);
+.insert([{ name:name,email:email,feedback:feedback }]);
 
 if(error){
+
 alert("Error saving feedback");
+
 }else{
-alert("Feedback saved!");
+
+alert("Thank you! Your feedback has been submitted.");
+document.querySelector("form").reset();
+
 }
 
 }
