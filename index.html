@@ -1,128 +1,127 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Marie Ann Saniya Portfolio</title>
+<title>Marie Ann Saniya Portfolio</title>
 
-  <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-  <style>
+<style>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: linear-gradient(135deg,#0f172a,#1e3a8a);
-      scroll-behavior: smooth;
-    }
+body{
+margin:0;
+font-family:Arial, sans-serif;
+color:white;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+scroll-behavior:smooth;
+}
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-    }
+header{
+text-align:center;
+padding:80px 20px;
+}
 
-    header h1 {
-      margin: 10px 0;
-    }
+header h1{
+margin:10px 0;
+}
 
-    .buttons a {
-      padding: 12px 25px;
-      margin: 10px;
-      background: #38bdf8;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+.buttons a{
+padding:12px 25px;
+margin:10px;
+background:#38bdf8;
+color:black;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:0.3s;
+}
 
-    .buttons a:hover {
-      background:#0ea5e9;
-      color:white;
-      transform:scale(1.05);
-    }
+.buttons a:hover{
+background:#0ea5e9;
+color:white;
+transform:scale(1.05);
+}
 
-    section{
-      padding:40px 20px;
-      max-width:900px;
-      margin:auto;
-    }
+section{
+padding:40px 20px;
+max-width:900px;
+margin:auto;
+}
 
-    .card{
-      background:white;
-      color:black;
-      padding:20px;
-      border-radius:10px;
-      margin:15px 0;
-    }
+.card{
+background:white;
+color:black;
+padding:20px;
+border-radius:10px;
+margin:15px 0;
+}
 
-    .skills span{
-      background:#38bdf8;
-      color:black;
-      padding:8px 14px;
-      margin:5px;
-      display:inline-block;
-      border-radius:6px;
-    }
+.skills span{
+background:#38bdf8;
+color:black;
+padding:8px 14px;
+margin:5px;
+display:inline-block;
+border-radius:6px;
+}
 
-    .certificates{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      justify-content:center;
-    }
+.certificates{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
 
-    .certificates img{
-      width:250px;
-      border-radius:10px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.4);
-    }
+.certificates img{
+width:250px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
 
-    .contact a{
-      display:block;
-      color:white;
-      margin:10px 0;
-      text-decoration:none;
-    }
+.contact a{
+display:block;
+color:white;
+margin:10px 0;
+text-decoration:none;
+}
 
-    .contact-form{
-      background:white;
-      color:black;
-      padding:25px;
-      border-radius:10px;
-      max-width:500px;
-      margin:25px auto 0;
-    }
+.contact-form{
+background:white;
+color:black;
+padding:25px;
+border-radius:10px;
+max-width:500px;
+margin:25px auto 0;
+}
 
-    .contact-form input,
-    .contact-form textarea{
-      width:100%;
-      padding:12px;
-      margin:10px 0;
-      border:1px solid #ccc;
-      border-radius:6px;
-      font-size:16px;
-    }
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
 
-    .contact-form button{
-      padding:12px 25px;
-      background:#38bdf8;
-      color:black;
-      border:none;
-      border-radius:8px;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.contact-form button{
+padding:12px 25px;
+background:#38bdf8;
+color:black;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    footer{
-      text-align:center;
-      padding:20px;
-      background:#0f172a;
-      margin-top:40px;
-    }
+footer{
+text-align:center;
+padding:20px;
+background:#0f172a;
+margin-top:40px;
+}
 
-  </style>
+</style>
 </head>
 
 <body>
@@ -167,7 +166,7 @@ cloud computing, and web development. I enjoy learning new technologies and buil
 <h2>Certificates</h2>
 
 <div class="certificates">
-<!-- Add certificate images -->
+<!-- Add certificate images here -->
 </div>
 
 </section>
@@ -190,7 +189,7 @@ cloud computing, and web development. I enjoy learning new technologies and buil
 
 <input id="name" placeholder="Your Name" required>
 
-<input id="email" placeholder="Your Email" required>
+<input id="email" type="email" placeholder="Your Email" required>
 
 <textarea id="feedback" placeholder="Your Feedback" rows="5" required></textarea>
 
@@ -208,10 +207,11 @@ cloud computing, and web development. I enjoy learning new technologies and buil
 
 <script>
 
-const supabaseUrl = "YOUR_PROJECT_URL";
-const supabaseKey = "YOUR_ANON_KEY";
+const supabaseUrl = "https://lzuzuvseqonsettitnyo.supabase.co";
 
-const supabaseClient = supabase.createClient(supabaseUrl,supabaseKey);
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6dXp1dnNlcW9uc2V0dGl0bnlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1NTU0MTAsImV4cCI6MjA4OTEzMTQxMH0.MRpz9Xv5vaqdEfjWqYa6rfnG0kwMX_5-1_sSB4vV1bc";
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function sendFeedback(event){
 
@@ -221,13 +221,20 @@ const name = document.getElementById("name").value;
 const email = document.getElementById("email").value;
 const feedback = document.getElementById("feedback").value;
 
-const { data,error } = await supabaseClient
+const { data, error } = await supabaseClient
 .from("feedback")
-.insert([{ name:name,email:email,feedback:feedback }]);
+.insert([
+{
+name:name,
+email:email,
+feedback:feedback
+}
+]);
 
 if(error){
 
 alert("Error saving feedback");
+console.log(error);
 
 }else{
 
