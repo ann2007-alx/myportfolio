@@ -34,7 +34,7 @@ async function sendFeedback(event){
   const feedback = document.getElementById("feedback").value;
 
   try {
-    const response = await fetch("https://marie-feedback-backend.onrender.com/contact", {
+    const response = await fetch("https://marie-feedback-backend.onrender.com/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
