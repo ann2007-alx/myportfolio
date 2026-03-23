@@ -6,6 +6,7 @@ function showPage(page) {
 // Typing Effect
 const text = "Aspiring Tech Enthusiast | Cloud & Web Developer";
 let i = 0;
+
 function typeEffect() {
   if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
@@ -25,8 +26,8 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-// ✅ FINAL FEEDBACK FUNCTION
-async function sendFeedback(event){
+// ✅ FINAL FEEDBACK FUNCTION (FIXED)
+async function sendFeedback(event) {
   event.preventDefault();
 
   const name = document.getElementById("name").value;
@@ -42,13 +43,30 @@ async function sendFeedback(event){
       body: JSON.stringify({ name, email, feedback })
     });
 
-    const result = await response.json();
+    // Check HTTP status
+    if (!response.ok) {
+      throw new Error("HTTP error: " + response.status);
+    }
 
-    if(result.success){
-      alert("Thank you! Your feedback has been submitted.");
+    // Check if response is JSON
+    const contentType = response.headers.get("content-type");
+
+    let result;
+
+    if (contentType && contentType.includes("application/json")) {
+      result = await response.json();
+    } else {
+      const text = await response.text();
+      console.log("Unexpected response:", text);
+      throw new Error("Invalid JSON response from server");
+    }
+
+    // Handle backend response
+    if (result.success) {
+      alert(result.message || "Thank you! Your feedback has been submitted.");
       document.querySelector("form").reset();
     } else {
-      alert("Error saving feedback");
+      alert(result.message || "Error saving feedback");
     }
 
   } catch (error) {
