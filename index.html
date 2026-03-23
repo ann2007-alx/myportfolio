@@ -1,21 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Marie Ann Saniya Portfolio</title>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<img src="profile.jpeg" alt="Marie Ann Saniya">
+
+<h1>Marie Ann Saniya V</h1>
+<p>BCA Student | Cloud Computing | Web Development Learner</p>
+
+<div class="buttons">
+<a href="#education">Education</a>
+<a href="#career-vision">Career Vision</a>
+<a href="#certificates">View Certificates</a>
+<a href="#contact">Contact Me</a>
+</div>
+
+</header>
+
 <section>
+<h2>About Me</h2>
+
+<div class="card">
+<p>
+Hello! I am <b>Marie Ann Saniya V</b>, a BCA student from Bangalore interested in technology,
+cloud computing, and web development. I enjoy learning new technologies and building projects.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Skills</h2>
+
+<div class="card skills">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>Python</span>
+<span>C</span>
+<span>C++</span>
+<span>GitHub</span>
+<span>Cloud Computing</span>
+</div>
+</section>
+
+<section id="education">
 <h2>Education</h2>
+
 <div class="card">
 <p><b>Degree:</b> BCA in Cloud Computing</p>
 <p><b>University:</b> Kristu Jayanti Deemed to be University</p>
 <p><b>Email:</b> 25bclb27@kristujayanti.com</p>
-
 <p>
-I'm <b>Marie Ann Saniya</b>, a Computer Science student specializing in BCA Cloud Computing with a passion for web development and problem-solving. I enjoy building projects that connect frontend design with backend logic.
+I'm <b>Marie Ann Saniya</b>, a Computer Science student specializing in BCA Cloud Computing with a passion for web development and problem-solving.
 </p>
-
-<p>
-My journey started with HTML and CSS, and has grown to include backend development with PHP and Node.js, database management with MySQL and MongoDB, and deploying full-stack applications to the cloud.
-</p>
-
-<p>
-I believe great software is built with both technical skill and attention to detail. Every project I build is an opportunity to learn something new and create something meaningful.
-</p>
-
 </div>
 </section>
+
+<section id="career-vision">
+<h2>Career Vision</h2>
+
+<div class="card">
+<p><b>Opening Statement:</b> My career vision is to become a proficient cloud computing professional.</p>
+</div>
+</section>
+
+<section id="certificates">
+<h2>Certificates</h2>
+
+<div class="certificates">
+<img src="aws_certificate1.jpeg">
+<img src="html_certificate2.jpeg">
+<img src="css_certificate3.jpeg">
+<img src="javascript_certificate4.jpeg">
+<img src="frontendweb_certificate5.jpeg">
+<img src="nodejs_certificate6.jpeg">
+<img src="github_certificate7.jpeg">
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="contact">
+<a href="mailto:saniyaa51015@gmail.com">📧 Email</a>
+<a href="https://www.linkedin.com/in/marie-ann-saniya-v-19a651379">LinkedIn</a>
+<a href="https://github.com/ann2007-alx/portfolio">GitHub</a>
+</div>
+
+<div class="contact-form">
+
+<h3>Send Me Feedback</h3>
+
+<form onsubmit="sendFeedback(event)">
+
+<input id="name" placeholder="Your Name" required>
+<input id="email" type="email" placeholder="Your Email" required>
+<textarea id="feedback" placeholder="Your Feedback" rows="5" required></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Marie Ann Saniya V
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
