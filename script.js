@@ -29,6 +29,7 @@ function closeModal() {
 
 // ✅ FINAL FEEDBACK FUNCTION (FIXED)
 async function sendFeedback(event) {
+  console.log("FORM SUBMITTED WORKING");
   event.preventDefault();
 
   const name = document.getElementById("name").value;
