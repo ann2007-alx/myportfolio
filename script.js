@@ -25,28 +25,34 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-// ✅ UPDATED FEEDBACK FUNCTION
+// ✅ FINAL FEEDBACK FUNCTION
 async function sendFeedback(event){
-event.preventDefault();
+  event.preventDefault();
 
-const name = document.getElementById("name").value;
-const email = document.getElementById("email").value;
-const feedback = document.getElementById("feedback").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const feedback = document.getElementById("feedback").value;
 
-const response = await fetch("https://marie-feedback-backend.onrender.com/contact", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({ name, email, feedback })
-});
+  try {
+    const response = await fetch("https://marie-feedback-backend.onrender.com/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, feedback })
+    });
 
-const result = await response.json();
+    const result = await response.json();
 
-if(result.success){
-alert("Thank you! Your feedback has been submitted.");
-document.querySelector("form").reset();
-}else{
-alert("Error saving feedback");
-}
+    if(result.success){
+      alert("Thank you! Your feedback has been submitted.");
+      document.querySelector("form").reset();
+    } else {
+      alert("Error saving feedback");
+    }
+
+  } catch (error) {
+    console.log(error);
+    alert("Failed to connect to server");
+  }
 }
