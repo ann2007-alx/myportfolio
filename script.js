@@ -1,4 +1,6 @@
 console.log("script loaded");
+
+// Page navigation
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(page).classList.add('active');
@@ -27,14 +29,20 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-// ✅ FINAL FEEDBACK FUNCTION (FIXED)
-async function sendFeedback(event) {
+// ✅ Attach globally (IMPORTANT FIX)
+window.sendFeedback = async function(event) {
   console.log("FORM SUBMITTED WORKING");
+
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const feedback = document.getElementById("feedback").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const feedback = document.getElementById("feedback").value.trim();
+
+  if (!name || !email || !feedback) {
+    alert("All fields are required");
+    return;
+  }
 
   try {
     const response = await fetch("https://marie-feedback-backend.onrender.com/feedback", {
@@ -45,14 +53,13 @@ async function sendFeedback(event) {
       body: JSON.stringify({ name, email, feedback })
     });
 
-    // Check HTTP status
+    // Handle HTTP errors
     if (!response.ok) {
       throw new Error("HTTP error: " + response.status);
     }
 
-    // Check if response is JSON
+    // Parse response safely
     const contentType = response.headers.get("content-type");
-
     let result;
 
     if (contentType && contentType.includes("application/json")) {
@@ -63,7 +70,7 @@ async function sendFeedback(event) {
       throw new Error("Invalid JSON response from server");
     }
 
-    // Handle backend response
+    // Success / error handling
     if (result.success) {
       alert(result.message || "Thank you! Your feedback has been submitted.");
       document.querySelector("form").reset();
@@ -75,4 +82,4 @@ async function sendFeedback(event) {
     console.log(error);
     alert("Failed to connect to server");
   }
-}
+};
