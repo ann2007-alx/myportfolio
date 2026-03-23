@@ -33,7 +33,7 @@ const name = document.getElementById("name").value;
 const email = document.getElementById("email").value;
 const feedback = document.getElementById("feedback").value;
 
-const response = await fetch("http://localhost:3000/contact", {
+const response = await fetch("https://marie-feedback-backend.onrender.com/contact", {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
