@@ -29,9 +29,9 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-// ✅ Attach globally (IMPORTANT FIX)
-window.sendFeedback = async function(event) {
-  console.log("FORM SUBMITTED WORKING");
+// Feedback submission
+window.sendFeedback = async function (event) {
+  console.log("FORM SUBMITTED");
 
   event.preventDefault();
 
@@ -44,33 +44,27 @@ window.sendFeedback = async function(event) {
     return;
   }
 
+  const payload = { name, email, feedback };
+  console.log("Sending to backend:", payload);
+
   try {
     const response = await fetch("https://marie-feedback-backend.onrender.com/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name, email, feedback })
+      body: JSON.stringify(payload)
     });
 
-    // Handle HTTP errors
+    console.log("HTTP status:", response.status);
+
     if (!response.ok) {
       throw new Error("HTTP error: " + response.status);
     }
 
-    // Parse response safely
-    const contentType = response.headers.get("content-type");
-    let result;
+    const result = await response.json();
+    console.log("Backend response:", result);
 
-    if (contentType && contentType.includes("application/json")) {
-      result = await response.json();
-    } else {
-      const text = await response.text();
-      console.log("Unexpected response:", text);
-      throw new Error("Invalid JSON response from server");
-    }
-
-    // Success / error handling
     if (result.success) {
       alert(result.message || "Thank you! Your feedback has been submitted.");
       document.querySelector("form").reset();
@@ -79,7 +73,7 @@ window.sendFeedback = async function(event) {
     }
 
   } catch (error) {
-    console.log(error);
+    console.error("Error:", error);
     alert("Failed to connect to server");
   }
 };
