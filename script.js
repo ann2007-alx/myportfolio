@@ -48,7 +48,7 @@ window.sendFeedback = async function (event) {
   console.log("Sending to backend:", payload);
 
   try {
-    const response = await fetch("https://marie-feedback-backend.onrender.com/feedback", {
+    const response = await fetch("https://portfolio-mk8b.onrender.com/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
