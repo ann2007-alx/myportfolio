@@ -1,22 +1,15 @@
-
-  import React, { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
   const [page, setPage] = useState("home");
   const [modalImg, setModalImg] = useState("");
 
-  const showPage = (p) => {
-    setPage(p);
-  };
+  const showPage = (p) => setPage(p);
 
-  const openModal = (src) => {
-    setModalImg(src);
-  };
+  const openModal = (src) => setModalImg(src);
 
-  const closeModal = () => {
-    setModalImg("");
-  };
+  const closeModal = () => setModalImg("");
 
   const sendFeedback = (e) => {
     e.preventDefault();
@@ -28,17 +21,17 @@ function App() {
 
       {/* NAVBAR */}
       <nav>
-        <a onClick={() => showPage("home")}>Home</a>
-        <a onClick={() => showPage("skills")}>Skills</a>
-        <a onClick={() => showPage("certificates")}>Certificates</a>
-        <a onClick={() => showPage("contact")}>Contact</a>
+        <button onClick={() => showPage("home")}>Home</button>
+        <button onClick={() => showPage("skills")}>Skills</button>
+        <button onClick={() => showPage("certificates")}>Certificates</button>
+        <button onClick={() => showPage("contact")}>Contact</button>
       </nav>
 
       {/* HOME */}
       {page === "home" && (
         <div className="container">
           <div className="card">
-            <img src="profile.jpeg" className="profile" alt="profile" />
+            <img src="/profile.jpeg" className="profile" alt="profile" />
             <h1>Marie Ann Saniya V</h1>
             <div className="typing">Web Developer</div>
           </div>
@@ -65,13 +58,13 @@ function App() {
           <div className="card">
             <h2>📜 Certificates</h2>
             <div className="certificates">
-              <img src="html_certificate2.jpeg" onClick={() => openModal("html_certificate2.jpeg")} />
-              <img src="aws_certificate1.jpeg" onClick={() => openModal("aws_certificate1.jpeg")} />
-              <img src="css_certificate3.jpeg" onClick={() => openModal("css_certificate3.jpeg")} />
-              <img src="javascript_certificate4.jpeg" onClick={() => openModal("javascript_certificate4.jpeg")} />
-              <img src="frontendweb_certificate5.jpeg" onClick={() => openModal("frontendweb_certificate5.jpeg")} />
-              <img src="nodejs_certificate6.jpeg" onClick={() => openModal("nodejs_certificate6.jpeg")} />
-              <img src="github_certificate7.jpeg" onClick={() => openModal("github_certificate7.jpeg")} />
+              <img src="/html_certificate2.jpeg" alt="certificate" onClick={() => openModal("/html_certificate2.jpeg")} />
+              <img src="/aws_certificate1.jpeg" alt="certificate" onClick={() => openModal("/aws_certificate1.jpeg")} />
+              <img src="/css_certificate3.jpeg" alt="certificate" onClick={() => openModal("/css_certificate3.jpeg")} />
+              <img src="/javascript_certificate4.jpeg" alt="certificate" onClick={() => openModal("/javascript_certificate4.jpeg")} />
+              <img src="/frontendweb_certificate5.jpeg" alt="certificate" onClick={() => openModal("/frontendweb_certificate5.jpeg")} />
+              <img src="/nodejs_certificate6.jpeg" alt="certificate" onClick={() => openModal("/nodejs_certificate6.jpeg")} />
+              <img src="/github_certificate7.jpeg" alt="certificate" onClick={() => openModal("/github_certificate7.jpeg")} />
             </div>
           </div>
         </div>
@@ -111,3 +104,4 @@ function App() {
 }
 
 export default App;
+  
