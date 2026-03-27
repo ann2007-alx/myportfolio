@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: yellow;
+  background: linear-gradient(135deg, #ffff00, #ffea00, #ffd700);
   background-size: 300% 300%;
   animation: glowBG 10s ease infinite;
   color: #333;
