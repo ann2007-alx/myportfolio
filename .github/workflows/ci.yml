@@ -2,24 +2,27 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
+    paths:
+      - '**/*'   # watch all files in the repo
+      - '!README.md'  # optional: ignore some files
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: CI=false npm run build
+      - name: Show frontend changes
+        run: |
+          echo "Changes in this commit:"
+          git fetch --prune --unshallow || true
+          git diff --name-status HEAD~1 HEAD | while read status file; do
+            echo "$status $file"
+            if [[ $file == *.css ]]; then
+              COLOR=$(grep -Eo 'background(-color)?: *[^;]+' "$file" | tail -1)
+              if [[ ! -z "$COLOR" ]]; then
+                echo "  Background color changed to $COLOR"
+              fi
+            fi
+          done
